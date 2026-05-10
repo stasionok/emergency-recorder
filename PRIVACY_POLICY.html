@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Политика конфиденциальности / Privacy Policy — Emergency Recorder</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #f8f8f8;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+    header {
+      text-align: center;
+      padding: 40px 0 32px;
+      border-bottom: 2px solid #e0e0e0;
+      margin-bottom: 32px;
+    }
+    header h1 { font-size: 1.6rem; font-weight: 700; color: #c0392b; }
+    header p { font-size: 0.9rem; color: #666; margin-top: 8px; }
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #ddd;
+      margin-bottom: 32px;
+    }
+    .tab-btn {
+      padding: 10px 24px;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #666;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .tab-btn.active { color: #c0392b; border-bottom-color: #c0392b; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 32px 0 12px;
+      color: #111;
+      padding-left: 12px;
+      border-left: 4px solid #c0392b;
+    }
+    h3 { font-size: 1rem; font-weight: 700; margin: 20px 0 8px; color: #333; }
+    p { margin-bottom: 14px; }
+    ul { padding-left: 20px; margin-bottom: 14px; }
+    ul li { margin-bottom: 6px; }
+    a { color: #c0392b; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .badge {
+      display: inline-block;
+      background: #c0392b;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    .note {
+      background: #fff8e1;
+      border-left: 4px solid #f39c12;
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin: 16px 0;
+      font-size: 0.95rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+    th { background: #f0f0f0; text-align: left; padding: 8px 12px; border: 1px solid #ddd; }
+    td { padding: 8px 12px; border: 1px solid #ddd; }
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #ddd;
+      font-size: 0.85rem;
+      color: #666;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.3rem; }
+      .tab-btn { padding: 10px 16px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Emergency Recorder</h1>
+    <p>Политика конфиденциальности / Privacy Policy</p>
+    <p>Дата вступления в силу: <strong>10 мая 2026 г.</strong> / Effective: <strong>May 10, 2026</strong></p>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('ru', this)">Русский</button>
+    <button class="tab-btn" onclick="switchTab('en', this)">English</button>
+  </div>
+
+  <!-- ===== RUSSIAN ===== -->
+  <div id="tab-ru" class="tab-content active">
+
+    <h2>1. Кто мы</h2>
+    <p>Приложение <strong>Emergency Recorder</strong> (applicationId: <code>ru.stasionok.emergencyrecorder</code>) разработано физическим лицом — далее «Разработчик». Контактный адрес: <a href="mailto:stasionok@gmail.com">stasionok@gmail.com</a>.</p>
+
+    <h2>2. Какие данные собираются</h2>
+
+    <h3>2.1. Аудиозаписи</h3>
+    <p>Приложение записывает звук по явной команде пользователя и сохраняет файл в формате AAC (ADTS) во внутреннее хранилище устройства (app-private storage). Разработчик <strong>не имеет доступа</strong> к содержимому записей и не хранит аудиофайлы на своих серверах.</p>
+    <p>Если пользователь настроил облачное хранилище (Google Drive, Dropbox, Yandex.Disk, pCloud, Box, Mail.ru, WebDAV, SFTP, Amazon S3), запись передаётся напрямую в это хранилище по зашифрованному соединению (HTTPS/TLS). Целевое хранилище — собственный аккаунт пользователя, к которому Разработчик не имеет доступа.</p>
+
+    <h3>2.1.1. OAuth-доступ к облакам</h3>
+    <p>Для подключения к Google Drive, Dropbox, Yandex.Disk, pCloud и Box используется стандартный протокол OAuth 2.0. Пользователь входит в свой аккаунт на странице самого провайдера (в браузере, через Custom Tabs); приложение получает только access-токен и refresh-токен с минимально необходимыми правами:</p>
+    <ul>
+      <li><strong>Google Drive:</strong> <code>drive.file</code> — доступ только к файлам, созданным самим приложением;</li>
+      <li><strong>Dropbox:</strong> <code>files.content.write files.content.read</code> с offline access;</li>
+      <li><strong>Yandex.Disk:</strong> <code>cloud_api:disk.write disk.read disk.info</code>;</li>
+      <li><strong>pCloud / Box:</strong> доступ к выделенной папке приложения.</li>
+    </ul>
+    <p>Логин и пароль пользователя <strong>никогда</strong> не попадают в приложение и не передаются Разработчику. Полученные токены хранятся только на устройстве пользователя в зашифрованном виде. Для Mail.ru используется WebDAV с app-specific password (создаётся пользователем в настройках Mail.ru), для SFTP/WebDAV/S3 — учётные данные, введённые пользователем вручную (также хранятся только на устройстве в зашифрованном виде).</p>
+
+    <h3>2.2. Идентификатор устройства (хеш)</h3>
+    <p>Для верификации подписки приложение использует одностороннее хеш-значение, производное от Android Installation ID. <strong>IMEI, рекламный ID (GAID) и серийный номер не используются.</strong> Хеш передаётся на серверы Google Play / RuStore исключительно в целях проверки статуса подписки.</p>
+
+    <h3>2.3. Адрес электронной почты</h3>
+    <p>Email-адрес собирается <strong>опционально</strong> при оформлении подписки, для отправки служебных уведомлений о статусе подписки: успешное продление, ошибка списания, истечение. Пользователь может отказаться от получения email-уведомлений при оформлении подписки — премиум-функции при этом не затрагиваются.</p>
+
+    <h2>3. Что мы НЕ собираем</h2>
+    <table>
+      <tr><th>Тип данных</th><th>Статус</th></tr>
+      <tr><td>Имя, фамилия, контакты</td><td>Не собираются</td></tr>
+      <tr><td>Геолокация (точная и приблизительная)</td><td>Не собирается</td></tr>
+      <tr><td>Рекламный идентификатор (GAID)</td><td>Не используется</td></tr>
+      <tr><td>SMS, звонки, история браузера</td><td>Не собираются</td></tr>
+      <tr><td>Аналитика поведения в приложении</td><td>Не собирается в v1.0</td></tr>
+      <tr><td>Финансовые данные (платёжные реквизиты)</td><td>Обрабатываются исключительно Google Play / RuStore</td></tr>
+    </table>
+
+    <h2>4. Используемые сторонние сервисы</h2>
+    <ul>
+      <li><strong>Google Play Billing</strong> — обработка платежей и подписок. Политика Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+      <li><strong>RuStore Billing</strong> (только в RuStore-сборке) — обработка платежей. Политика VK: <a href="https://rustore.ru/help/legal" target="_blank" rel="noopener">rustore.ru/help/legal</a></li>
+      <li><strong>Google Play Developer API</strong> — проверка статуса подписки на стороне сервера (только Purchase Token, без персональных данных).</li>
+      <li><strong>Resend</strong> (<a href="https://resend.com" target="_blank" rel="noopener">resend.com</a>) — сервис для отправки служебных email-уведомлений. Передаются только email-адрес и текст уведомления. Политика Resend: <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">resend.com/legal/privacy-policy</a></li>
+      <li><strong>Google Cloud Pub/Sub</strong> — получаем уведомления от Google Play о статусе подписок (Real-time Developer Notifications). Сами в Pub/Sub ничего не публикуем — это односторонная входящая очередь сообщений.</li>
+    </ul>
+
+    <h2>4а. Сроки хранения</h2>
+    <ul>
+      <li><strong>Email-лог</strong> (таблица `email_log`): 90 дней.</li>
+      <li><strong>Subscription tokens</strong> (токены покупок): до окончания подписки + 30 дней, затем автоматически удаляются.</li>
+      <li><strong>Аудиозаписи</strong>: хранятся локально на устройстве или в облаке пользователя до явного удаления.</li>
+    </ul>
+
+    <h2>5. Специальные возможности (Accessibility Service)</h2>
+    <p>Приложение использует Accessibility Service исключительно для обнаружения комбинаций физических кнопок громкости при заблокированном экране. Сервис <strong>не считывает, не передаёт и не анализирует</strong> содержимое других приложений или экрана. Единственное действие, которое он выполняет — обнаружение нажатия кнопки и передача сигнала сервису записи.</p>
+
+    <h2>6. Где хранятся данные</h2>
+    <ul>
+      <li><strong>Аудиозаписи</strong> — на устройстве пользователя и/или в его личном облачном хранилище.</li>
+      <li><strong>Настройки и хеш-ID</strong> — на устройстве пользователя.</li>
+      <li><strong>Серверы Разработчика</strong> — используются только для верификации подписки (хранится только Purchase Token и его статус, без аудио и персональных данных).</li>
+    </ul>
+
+    <h2>7. Права пользователя</h2>
+    <p>В соответствии с Федеральным законом № 152-ФЗ «О персональных данных» и GDPR пользователь вправе:</p>
+    <ul>
+      <li><strong>Получить доступ</strong> к своим данным — обратитесь на <a href="mailto:stasionok@gmail.com">stasionok@gmail.com</a>.</li>
+      <li><strong>Удалить данные</strong> — аудиозаписи удаляются в приложении; для удаления email и хеш-ID — обратитесь по email.</li>
+      <li><strong>Исправить данные</strong> — обратитесь по email.</li>
+      <li><strong>Отозвать согласие</strong> — удалите приложение и/или напишите нам.</li>
+      <li><strong>Запросить удаление email из системы уведомлений</strong> — отправьте запрос на <a href="mailto:stasionok@gmail.com">stasionok@gmail.com</a>. Будем обработан в течение 30 дней.</li>
+    </ul>
+    <p>Срок ответа на запросы — 30 дней (GDPR) / 30 дней (152-ФЗ).</p>
+
+    <h2>8. Дети</h2>
+    <p>Приложение предназначено для лиц старше 18 лет. Мы сознательно не собираем данные детей. Если вы считаете, что ребёнок использует приложение, обратитесь на <a href="mailto:stasionok@gmail.com">stasionok@gmail.com</a>.</p>
+
+    <h2>9. Безопасность</h2>
+    <p>Платные настройки защищены шифрованием AES-GCM с ключом, производным от пароля пользователя (алгоритм Argon2id). Данные передаются только по зашифрованным каналам (HTTPS/TLS). Разработчик не хранит аудиофайлы и не имеет возможности расшифровать защищённые настройки без пароля пользователя.</p>
+
+    <h2>10. Изменения политики</h2>
+    <p>При существенных изменениях мы уведомим пользователей через обновление приложения и/или изменение даты вступления в силу на этой странице. Продолжение использования приложения после изменений означает согласие с новой редакцией.</p>
+
+    <h2>11. Контакт</h2>
+    <p>По вопросам конфиденциальности: <a href="mailto:stasionok@gmail.com">stasionok@gmail.com</a></p>
+    <p>Срок ответа: до 30 рабочих дней.</p>
+
+  </div><!-- /tab-ru -->
+
+  <!-- ===== ENGLISH ===== -->
+  <div id="tab-en" class="tab-content">
+
+    <h2>1. Who We Are</h2>
+    <p>The <strong>Emergency Recorder</strong> application (applicationId: <code>ru.stasionok.emergencyrecorder</code>) is developed by an individual developer ("Developer"). Contact: <a href="mailto:stasionok@gmail.com">stasionok@gmail.com</a>.</p>
+
+    <h2>2. Data We Collect</h2>
+
+    <h3>2.1. Audio Recordings</h3>
+    <p>The app records audio on explicit user command and saves the file in AAC (ADTS) format to the device's private internal storage. The Developer <strong>cannot access</strong> recording content and does not store audio files on any servers.</p>
+    <p>If the user configures a cloud storage target (Google Drive, Dropbox, Yandex.Disk, pCloud, Box, Mail.ru, WebDAV, SFTP, Amazon S3), the recording is transmitted directly to that storage over an encrypted connection (HTTPS/TLS). The destination is the user's own storage account — the Developer has no access to it.</p>
+
+    <h3>2.1.1. OAuth Access to Clouds</h3>
+    <p>Connections to Google Drive, Dropbox, Yandex.Disk, pCloud, and Box use the standard OAuth 2.0 protocol. The user signs in on the provider's own page (in-browser via Custom Tabs); the app receives only an access token and a refresh token with minimum required scopes:</p>
+    <ul>
+      <li><strong>Google Drive:</strong> <code>drive.file</code> — access only to files the app itself creates;</li>
+      <li><strong>Dropbox:</strong> <code>files.content.write files.content.read</code> with offline access;</li>
+      <li><strong>Yandex.Disk:</strong> <code>cloud_api:disk.write disk.read disk.info</code>;</li>
+      <li><strong>pCloud / Box:</strong> access to the app's dedicated folder.</li>
+    </ul>
+    <p>The user's login and password <strong>never</strong> reach the app and are not transmitted to the Developer. Tokens received are stored only on the user's device, encrypted. For Mail.ru, a WebDAV connection with an app-specific password (created by the user in Mail.ru settings) is used; for SFTP/WebDAV/S3, credentials are entered by the user manually (also stored only on the device, encrypted).</p>
+
+    <h3>2.2. Device Identifier (Hash)</h3>
+    <p>For subscription verification, the app uses a one-way hash derived from the Android Installation ID. <strong>IMEI, Advertising ID (GAID), and device serial number are not used.</strong> The hash is submitted to Google Play / RuStore servers solely to verify subscription status.</p>
+
+    <h3>2.3. Email Address</h3>
+    <p>An email address is collected <strong>optionally</strong> when subscribing, to send transactional notifications about subscription status: successful renewal, payment failure, expiration. The user may opt out of email notifications at subscription checkout — premium features are unaffected by this choice.</p>
+
+    <h2>3. Data We Do NOT Collect</h2>
+    <table>
+      <tr><th>Data type</th><th>Status</th></tr>
+      <tr><td>Name, contacts</td><td>Not collected</td></tr>
+      <tr><td>Location (precise or approximate)</td><td>Not collected</td></tr>
+      <tr><td>Advertising ID (GAID)</td><td>Not used</td></tr>
+      <tr><td>SMS, call logs, browser history</td><td>Not collected</td></tr>
+      <tr><td>In-app analytics / behavioral data</td><td>Not collected in v1.0</td></tr>
+      <tr><td>Financial / payment data</td><td>Handled exclusively by Google Play / RuStore</td></tr>
+    </table>
+
+    <h2>4. Third-Party Services</h2>
+    <ul>
+      <li><strong>Google Play Billing</strong> — payment and subscription processing. Google Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+      <li><strong>RuStore Billing</strong> (RuStore build only) — payment processing. VK Privacy Policy: <a href="https://rustore.ru/help/legal" target="_blank" rel="noopener">rustore.ru/help/legal</a></li>
+      <li><strong>Google Play Developer API</strong> — server-side subscription status verification (Purchase Token only, no personal data).</li>
+      <li><strong>Resend</strong> (<a href="https://resend.com" target="_blank" rel="noopener">resend.com</a>) — transactional email delivery service. Only the user’s email address and notification text are transmitted. Resend Privacy Policy: <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">resend.com/legal/privacy-policy</a></li>
+      <li><strong>Google Cloud Pub/Sub</strong> — we receive subscription status notifications from Google Play (Real-time Developer Notifications). We do not publish anything to Pub/Sub ourselves — it is a one-way inbound message queue.</li>
+    </ul>
+
+    <h2>4a. Data Retention</h2>
+    <ul>
+      <li><strong>Email log</strong> (<code>email_log</code> table): 90 days.</li>
+      <li><strong>Subscription tokens</strong> (purchase tokens): until subscription end + 30 days, then automatically deleted.</li>
+      <li><strong>Audio recordings</strong>: stored locally on the device or in the user’s own cloud until explicitly deleted.</li>
+    </ul>
+
+    <h2>5. Accessibility Service</h2>
+    <p>The app uses Android's Accessibility Service solely to detect physical volume button combinations when the screen is locked. The service <strong>does not read, capture, or transmit</strong> content from other apps or the screen. Its only action is detecting a button event and signaling the recording service.</p>
+
+    <h2>6. Where Data Is Stored</h2>
+    <ul>
+      <li><strong>Audio recordings</strong> — on the user's device and/or in the user's personal cloud storage.</li>
+      <li><strong>Settings and hashed device ID</strong> — on the user's device.</li>
+      <li><strong>Developer's servers</strong> — used only for subscription verification (stores Purchase Token and its status; no audio, no personal data).</li>
+    </ul>
+
+    <h2>7. Your Rights</h2>
+    <p>Under GDPR and Russian Federal Law No. 152-FZ ("On Personal Data"), you have the right to:</p>
+    <ul>
+      <li><strong>Access</strong> your data — email <a href="mailto:stasionok@gmail.com">stasionok@gmail.com</a>.</li>
+      <li><strong>Delete</strong> your data — delete recordings in-app; for email and hashed ID deletion, contact us by email.</li>
+      <li><strong>Rectify</strong> your data — contact us by email.</li>
+      <li><strong>Withdraw consent</strong> — uninstall the app and/or email us.</li>
+      <li><strong>Request removal of your email from the notification system</strong> — send a request to <a href="mailto:stasionok@gmail.com">stasionok@gmail.com</a>. Processed within 30 days.</li>
+    </ul>
+    <p>Response time: within 30 days (GDPR) / 30 days (152-FZ).</p>
+
+    <h2>8. Children</h2>
+    <p>This app is intended for users aged 18 and older. We do not knowingly collect data from children. If you believe a child is using this app, contact <a href="mailto:stasionok@gmail.com">stasionok@gmail.com</a>.</p>
+
+    <h2>9. Security</h2>
+    <p>Premium settings are encrypted with AES-GCM using a key derived from the user's password (Argon2id). All data transmissions use encrypted channels (HTTPS/TLS). The Developer cannot decrypt protected settings without the user's password and has no access to audio files.</p>
+
+    <h2>10. Changes to This Policy</h2>
+    <p>We will notify users of material changes through an app update and/or by updating the effective date on this page. Continued use of the app after changes constitutes acceptance of the revised policy.</p>
+
+    <h2>11. Contact</h2>
+    <p>Privacy inquiries: <a href="mailto:stasionok@gmail.com">stasionok@gmail.com</a></p>
+    <p>Response time: within 30 business days.</p>
+
+  </div><!-- /tab-en -->
+
+  <footer>
+    <p>Emergency Recorder &mdash; ru.stasionok.emergencyrecorder</p>
+    <p>Дата вступления в силу / Effective date: 10 мая / May 10, 2026</p>
+    <p><a href="index.html">← Главная / Home</a> &nbsp;|&nbsp; <a href="TERMS.html">Условия использования / Terms</a></p>
+  </footer>
+</div>
+
+<script>
+  function switchTab(lang, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + lang).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
