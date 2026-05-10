@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emergency Recorder — Android app for safety audio recording</title>
+<meta name="description" content="Emergency Recorder — приложение для Android, которое мгновенно начинает аудиозапись и параллельно загружает её в выбранные облачные сервисы пользователя.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="logo-block">
+      <div class="logo-placeholder" aria-hidden="true">ER</div>
+      <h1>Emergency Recorder</h1>
+    </div>
+    <p class="tagline">Быстрая аудиозапись в экстренной ситуации с параллельной выгрузкой в облако пользователя</p>
+    <p class="tagline-en">Fast audio recording in emergency situations with parallel cloud upload</p>
+    <p class="platform">Android · 8.0+</p>
+  </div>
+</header>
+
+<main class="container">
+
+<section id="overview">
+  <h2>Что делает приложение</h2>
+  <p>Emergency Recorder — это инструмент для быстрого включения аудиозаписи (например, по виджету или жесту) в ситуациях, когда важна каждая секунда. Запись сохраняется на устройстве и одновременно стримится в облачные хранилища, которые подключил сам пользователь — чтобы файл остался доступен, даже если устройство будет потеряно или повреждено.</p>
+  <ul class="features">
+    <li>Запуск записи через виджет домашнего экрана, плитку быстрых настроек или Accessibility-сервис</li>
+    <li>Параллельный стриминг во все подключённые облачные аккаунты</li>
+    <li>Автоматический повтор загрузки при потере связи</li>
+    <li>Локальная копия каждой записи на устройстве</li>
+    <li>Шифрование настроек и токенов на устройстве (Argon2id + AES-GCM)</li>
+  </ul>
+</section>
+
+<section id="cloud-providers">
+  <h2>Поддерживаемые облачные сервисы</h2>
+  <p>Пользователь сам выбирает, куда загружать свои записи. Никаких файлов не отправляется на сервера разработчика — только в аккаунты, к которым пользователь дал доступ напрямую.</p>
+  <ul class="providers">
+    <li>Google Drive (через нативный Account Picker, scope <code>drive.file</code>)</li>
+    <li>Dropbox (OAuth 2.0 + PKCE)</li>
+    <li>Yandex.Disk (OAuth 2.0)</li>
+    <li>pCloud (OAuth 2.0 + PKCE)</li>
+    <li>Box (OAuth 2.0 + PKCE)</li>
+    <li>Mail.ru Cloud (WebDAV + app-specific password)</li>
+    <li>Любой WebDAV-сервер</li>
+    <li>SFTP-сервер</li>
+    <li>S3-совместимое хранилище</li>
+  </ul>
+</section>
+
+<section id="privacy">
+  <h2>Privacy Policy</h2>
+  <p><strong>Дата вступления в силу:</strong> 10 мая 2026</p>
+
+  <h3>Какие данные собирает приложение</h3>
+  <ul>
+    <li><strong>Аудиозаписи</strong>, которые пользователь явно создаёт через приложение. Хранятся локально на устройстве пользователя.</li>
+    <li><strong>OAuth-токены</strong> для облачных сервисов, к которым пользователь подключился. Хранятся только на устройстве пользователя в зашифрованном виде (Argon2id для деривации ключа + Tink AES-GCM).</li>
+    <li><strong>Настройки приложения</strong> — выбор активных облаков, имя папки и т.п. Хранятся только на устройстве.</li>
+  </ul>
+
+  <h3>Куда отправляются данные</h3>
+  <ul>
+    <li>Аудиозаписи отправляются только в те облачные аккаунты, которые пользователь сам подключил, и только напрямую — по официальным API провайдеров (Google Drive, Dropbox, Yandex.Disk, pCloud, Box, Mail.ru, WebDAV/SFTP/S3-серверам пользователя).</li>
+    <li>Разработчик <strong>не имеет</strong> собственных серверов, на которые поступали бы записи или метаданные пользователей.</li>
+    <li>Приложение <strong>не использует</strong> сторонние трекеры аналитики и не отправляет crash-логи третьим сторонам.</li>
+  </ul>
+
+  <h3>OAuth scope</h3>
+  <p>Приложение запрашивает минимально необходимые scope у каждого провайдера:</p>
+  <ul>
+    <li>Google Drive: <code>https://www.googleapis.com/auth/drive.file</code> — доступ только к файлам, которые создало само приложение.</li>
+    <li>Dropbox: <code>files.content.write files.content.read</code> с offline access.</li>
+    <li>Yandex.Disk: <code>cloud_api:disk.write cloud_api:disk.read cloud_api:disk.info</code>.</li>
+    <li>pCloud / Box: запись и чтение в выделенной папке приложения.</li>
+  </ul>
+
+  <h3>Удаление данных</h3>
+  <p>Пользователь может в любой момент:</p>
+  <ul>
+    <li>Удалить локальные записи через файловый менеджер устройства или внутри приложения.</li>
+    <li>Отключить любой облачный аккаунт в настройках приложения — токены немедленно удаляются с устройства.</li>
+    <li>Отозвать доступ приложения через панель управления соответствующего облачного провайдера.</li>
+    <li>Удалить приложение — все локальные данные и токены удаляются вместе с ним.</li>
+  </ul>
+
+  <h3>Дети</h3>
+  <p>Приложение не предназначено для детей младше 13 лет и не собирает целенаправленно данные от них.</p>
+
+  <h3>Изменения политики</h3>
+  <p>Изменения в политике конфиденциальности будут публиковаться на этой странице с обновлением даты вступления в силу.</p>
+</section>
+
+<section id="terms">
+  <h2>Terms of Service</h2>
+  <p><strong>Дата вступления в силу:</strong> 10 мая 2026</p>
+
+  <h3>Использование приложения</h3>
+  <p>Emergency Recorder предоставляется «как есть», без каких-либо явных или подразумеваемых гарантий. Пользователь использует приложение на свой страх и риск.</p>
+
+  <h3>Ответственность</h3>
+  <ul>
+    <li>Разработчик не несёт ответственности за потерю записей вследствие сбоев устройства, отсутствия связи, сбоев в работе сторонних облачных сервисов или удаления приложения пользователем.</li>
+    <li>Пользователь несёт ответственность за соблюдение законодательства своей юрисдикции при использовании функций аудиозаписи (включая получение согласия на запись там, где это требуется по закону).</li>
+  </ul>
+
+  <h3>Облачные сервисы</h3>
+  <p>Использование облачных сервисов (Google Drive, Dropbox, Yandex.Disk, pCloud, Box, Mail.ru и др.) регулируется условиями этих сервисов. Разработчик Emergency Recorder не является стороной этих отношений.</p>
+
+  <h3>Лицензия</h3>
+  <p>Приложение распространяется бесплатно. Подписка на расширенные функции (если будет добавлена) регулируется правилами Google Play.</p>
+</section>
+
+<section id="contact">
+  <h2>Контакты</h2>
+  <p>По любым вопросам, связанным с приложением, конфиденциальностью или удалением данных:</p>
+  <ul>
+    <li>Email: <a href="mailto:robtyler666@gmail.com">robtyler666@gmail.com</a></li>
+    <li>Исходный код / issue tracker: <a href="https://github.com/stasionok/emergency-recorder">github.com/stasionok/emergency-recorder</a></li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Emergency Recorder. Все права защищены.</p>
+    <p><a href="#privacy">Privacy Policy</a> · <a href="#terms">Terms of Service</a> · <a href="#contact">Contact</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
