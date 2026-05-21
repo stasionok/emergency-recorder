@@ -190,7 +190,7 @@
     </ul>
     <p>Срок ответа на запросы — 30 дней (GDPR) / 30 дней (152-ФЗ).</p>
 
-    <h2>7а. Удаление аккаунта и данных</h2>
+    <h2 id="account-deletion">7а. Удаление аккаунта и данных</h2>
     <p>Emergency Recorder не создаёт собственного «аккаунта» — авторизация в приложении не требуется. Тем не менее, следующие данные могут существовать и удаляются так:</p>
     <ul>
       <li><strong>Аудиозаписи на устройстве</strong> — удалите их во вкладке «Записи» приложения, либо удалите само приложение. После удаления приложения данные стираются вместе с ним системой Android.</li>
@@ -292,7 +292,7 @@
     </ul>
     <p>Response time: within 30 days (GDPR) / 30 days (152-FZ).</p>
 
-    <h2>7a. Account &amp; Data Deletion</h2>
+    <h2 id="account-deletion-en">7a. Account &amp; Data Deletion</h2>
     <p>Emergency Recorder does not create a developer-side account — no sign-in is required. The data items that may exist are deleted as follows:</p>
     <ul>
       <li><strong>On-device audio recordings</strong> — delete them via the “Recordings” tab in the app, or uninstall the app. On uninstall, Android wipes all app-private data automatically.</li>
@@ -321,16 +321,29 @@
   <footer>
     <p>Emergency Recorder &mdash; ru.stasionok.emergencyrecorder</p>
     <p>Дата вступления в силу / Effective date: 10 мая / May 10, 2026</p>
-    <p><a href="index.html">← Главная / Home</a> &nbsp;|&nbsp; <a href="TERMS.html">Условия использования / Terms</a></p>
+    <p><a href="index.html">← Главная</a> / <a href="index_en.html">Home</a> &nbsp;|&nbsp; <a href="TERMS.html">Условия использования</a> / <a href="TERMS.html?lang=en">Terms</a> &nbsp;|&nbsp; <a href="PRIVACY_POLICY.html">Политика конфиденциальности</a> / <a href="PRIVACY_POLICY.html?lang=en">Privacy Policy</a></p>
   </footer>
 </div>
 
 <script>
+  function setActiveLang(lang) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + lang).classList.add('active');
+    const btnIndex = lang === 'en' ? 1 : 0;
+    const btn = document.querySelectorAll('.tab-btn')[btnIndex];
+    if (btn) btn.classList.add('active');
+  }
+
   function switchTab(lang, btn) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('tab-' + lang).classList.add('active');
     btn.classList.add('active');
+  }
+
+  if (new URLSearchParams(window.location.search).get('lang') === 'en') {
+    setActiveLang('en');
   }
 </script>
 </body>
