@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /index.html
+
+Sitemap: https://emrec.ru/sitemap.xml
